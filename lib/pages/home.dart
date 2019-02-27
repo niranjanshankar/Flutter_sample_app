@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../product_manager.dart';
-import './product_admin.dart';
+// import './product_admin.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -21,11 +21,7 @@ class HomePage extends StatelessWidget {
             ListTile(
               title: Text('Manage Products'),
               onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => ProductAdminPage()),
-                );
+                Navigator.pushReplacementNamed(context, '/admin');
               },
             )
           ],

@@ -1,30 +1,25 @@
 import 'package:flutter/material.dart';
 
-import '../product_manager.dart';
-import './product_admin.dart';
+import './home.dart';
 
-class HomePage extends StatelessWidget {
+class ProductAdminPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Drawer is the widget used for hamburger menu
-
       drawer: Drawer(
         child: Column(
           children: <Widget>[
             AppBar(
-              // this boolean ensures you hide the hamburger icon
-              // when drawer is open
               automaticallyImplyLeading: false,
               title: Text('Choose'),
             ),
             ListTile(
-              title: Text('Manage Products'),
+              title: Text('Home Page'),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                      builder: (BuildContext context) => ProductAdminPage()),
+                      builder: (BuildContext context) => HomePage()),
                 );
               },
             )
@@ -32,9 +27,11 @@ class HomePage extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        title: Text('EasyList'),
+        title: Text('Product Admin'),
       ),
-      body: ProductManager(),
+      body: Center(
+        child: Text('Dummy Content!'),
+      ),
     );
   }
 }

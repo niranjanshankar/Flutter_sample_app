@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './pages/home.dart';
+import './pages/auth.dart';
 // import 'package:flutter/rendering.dart';
 
 main() {
@@ -13,7 +13,7 @@ class UdemyCourseApp extends StatelessWidget {
     return MaterialApp(
       // debugShowMaterialGrid: true,
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: HomePage(),
+      home: AuthPage(),
     );
   }
 }

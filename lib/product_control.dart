@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class ProducControl extends StatelessWidget {
   final Function addProduct;
-  final Function removeProduct;
+  // final Function removeProduct;
 
-  ProducControl(this.addProduct, this.removeProduct);
+  ProducControl(this.addProduct);
 
   @override
   Widget build(BuildContext context) {
@@ -15,20 +15,12 @@ class ProducControl extends StatelessWidget {
           child: RaisedButton(
             color: Theme.of(context).primaryColor,
             onPressed: () {
-              this.addProduct('Sweets');
+              this.addProduct({'title' : 'Sweets', 'asset' : 'assets/food.jpg'});
             },
             child: Text('Add Product'),
           ),
         ),
-        new Expanded(
-          child: RaisedButton(
-            color: Theme.of(context).primaryColor,
-            onPressed: () {
-              this.removeProduct('Sweets');
-            },
-            child: Text('Remove Product'),
-          ),
-        )
+        
       ],
     );
   }

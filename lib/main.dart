@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './product_manager.dart';
+import './pages/home.dart';
 // import 'package:flutter/rendering.dart';
 
 main() {
@@ -12,15 +12,8 @@ class UdemyCourseApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       // debugShowMaterialGrid: true,
-      theme:ThemeData(
-        primarySwatch: Colors.indigo 
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('EasyList'),
-        ),
-        body: ProductManager(startingProduct: 'Food Tester'),
-      ),
+      theme: ThemeData(primarySwatch: Colors.indigo),
+      home: HomePage(),
     );
   }
 }

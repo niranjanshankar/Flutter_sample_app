@@ -1,17 +1,42 @@
 import 'package:flutter/material.dart';
 
+import './pages/product.dart';
+
 class Products extends StatelessWidget {
-  final List<String> products;
+  final List<Map> products;
+  final Function deleteProductAtIndex;
 
 // SHORTCUT TO CREATE A CONSTRUCTUR THAT GETS AN INPUT AND WRITES IT TO LOCAL PROPERTY
-  Products(this.products);
+  Products(this.products, {this.deleteProductAtIndex});
 
   Widget _buildProductItem(BuildContext context, int index) {
     return Card(
       child: Column(
         children: <Widget>[
-          Image.asset('assets/food.jpg'),
-          Text(products[index])
+          Image.asset(products[index]['asset']),
+          Text(products[index]['title']),
+          ButtonBar(
+            alignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(
+                child: Text('Details'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => ProductPage(
+                          products[index]['asset'], products[index]['title']),
+                    ),
+                  ).then((value) {
+                    // print(value);
+                    if (value) {
+                      this.deleteProductAtIndex(index);
+                    }
+                  });
+                },
+              ),
+            ],
+          ),
         ],
       ),
     );

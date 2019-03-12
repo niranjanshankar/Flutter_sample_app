@@ -7,7 +7,18 @@ class ProductCreatePage extends StatelessWidget {
     // So do not create a new Scaffold.
     // Only create body elements that'll replace the body in product_admin
     return Center(
-      child: Text('Create a product'),
+      child: RaisedButton(
+        child: Text('Add'),
+        onPressed: () {
+          showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) {
+                return Center(
+                  child: Text('show modal!'),
+                );
+              });
+        },
+      ),
     );
   }
 }

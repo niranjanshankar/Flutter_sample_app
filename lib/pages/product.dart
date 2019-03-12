@@ -7,10 +7,38 @@ class ProductPage extends StatelessWidget {
 
   ProductPage(this.asset, this.title);
 
+  _showAlert(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: Text("Are you sure?"),
+              content: Text('This action cannot be undone'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('DISCARD'),
+                  onPressed: () {
+                    // this closes the pop-up
+                    Navigator.pop(context);
+                  },
+                ),
+                FlatButton(
+                  child: Text('DELETE'),
+                  onPressed: () {
+                    print("Delete button pressed!");
+                    // this closes the pop-up and next line deletes the item.
+                    Navigator.pop(context);
+                    Navigator.pop(context, true);
+                  },
+                ),
+              ]);
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      // WillPopScope is used to perform some action 
+      // WillPopScope is used to perform some action
       // on pressing "back button" of the routed page
 
       // Every WillPopScope widget requires an onWillPop function
@@ -39,8 +67,8 @@ class ProductPage extends StatelessWidget {
                 child: Text('Delete'),
                 color: Theme.of(context).accentColor,
                 onPressed: () {
-                  print("Delete button pressed!");
-                  Navigator.pop(context, true);
+                  // this will show a pop-up
+                  _showAlert(context);
                 },
               ),
             ),

@@ -19,7 +19,7 @@ class UdemyCourseApp extends StatefulWidget {
 }
 
 class _UdemyCourseAppState extends State<UdemyCourseApp> {
-  List<Map<String, String>> _products = [];
+  List<Map<String, dynamic>> _products = [];
 
   void _addProduct(product) {
     setState(() {
@@ -42,10 +42,10 @@ class _UdemyCourseAppState extends State<UdemyCourseApp> {
       routes: {
         // The below line is same as: home: AuthPage()
         // You cannot have both in your code. Use either of these
-        // '/' : (BuildContext context) => AuthPage(),
+        '/auth' : (BuildContext context) => AuthPage(),
         '/home': (BuildContext context) =>
-            HomePage(_products, _addProduct, _deleteProductAtIndex),
-        '/admin': (BuildContext context) => ProductAdminPage(),
+            HomePage(_products),
+        '/admin': (BuildContext context) => ProductAdminPage(_addProduct, _deleteProductAtIndex),
       },
       // This is to create dynamic routes
       // when you have to parse route data
@@ -68,7 +68,7 @@ class _UdemyCourseAppState extends State<UdemyCourseApp> {
       onUnknownRoute: (RouteSettings settings) {
         return MaterialPageRoute(
             builder: (BuildContext context) =>
-                HomePage(_products, _addProduct, _deleteProductAtIndex));
+                HomePage(_products));
       },
     );
   }
